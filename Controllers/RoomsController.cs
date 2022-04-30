@@ -10,22 +10,22 @@ using MedicalConsultationSystem.Models;
 
 namespace MedicalConsultationSystem.Controllers
 {
-    public class DoctorsController : Controller
+    public class RoomsController : Controller
     {
         private readonly MedicalConsultationContext _context;
 
-        public DoctorsController(MedicalConsultationContext context)
+        public RoomsController(MedicalConsultationContext context)
         {
             _context = context;
         }
 
-        // GET: Doctors
+        // GET: Rooms
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Doctors.ToListAsync());
+            return View(await _context.Rooms.ToListAsync());
         }
 
-        // GET: Doctors/Details/5
+        // GET: Rooms/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace MedicalConsultationSystem.Controllers
                 return NotFound();
             }
 
-            var doctor = await _context.Doctors
+            var room = await _context.Rooms
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (doctor == null)
+            if (room == null)
             {
                 return NotFound();
             }
 
-            return View(doctor);
+            return View(room);
         }
 
-        // GET: Doctors/Create
+        // GET: Rooms/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Doctors/Create
+        // POST: Rooms/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,LastName,FirstMidName,DateOfJoining,Specialization")] Doctor doctor)
+        public async Task<IActionResult> Create([Bind("ID,RoomNumber,PatientId")] Room room)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(doctor);
+                _context.Add(room);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(doctor);
+            return View(room);
         }
 
-        // GET: Doctors/Edit/5
+        // GET: Rooms/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace MedicalConsultationSystem.Controllers
                 return NotFound();
             }
 
-            var doctor = await _context.Doctors.FindAsync(id);
-            if (doctor == null)
+            var room = await _context.Rooms.FindAsync(id);
+            if (room == null)
             {
                 return NotFound();
             }
-            return View(doctor);
+            return View(room);
         }
 
-        // POST: Doctors/Edit/5
+        // POST: Rooms/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,LastName,FirstMidName,DateOfJoining,Specialization")] Doctor doctor)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,RoomNumber,PatientId")] Room room)
         {
-            if (id != doctor.ID)
+            if (id != room.ID)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace MedicalConsultationSystem.Controllers
             {
                 try
                 {
-                    _context.Update(doctor);
+                    _context.Update(room);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DoctorExists(doctor.ID))
+                    if (!RoomExists(room.ID))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace MedicalConsultationSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(doctor);
+            return View(room);
         }
 
-        // GET: Doctors/Delete/5
+        // GET: Rooms/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace MedicalConsultationSystem.Controllers
                 return NotFound();
             }
 
-            var doctor = await _context.Doctors
+            var room = await _context.Rooms
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (doctor == null)
+            if (room == null)
             {
                 return NotFound();
             }
 
-            return View(doctor);
+            return View(room);
         }
 
-        // POST: Doctors/Delete/5
+        // POST: Rooms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var doctor = await _context.Doctors.FindAsync(id);
-            _context.Doctors.Remove(doctor);
+            var room = await _context.Rooms.FindAsync(id);
+            _context.Rooms.Remove(room);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DoctorExists(int id)
+        private bool RoomExists(int id)
         {
-            return _context.Doctors.Any(e => e.ID == id);
+            return _context.Rooms.Any(e => e.ID == id);
         }
     }
 }

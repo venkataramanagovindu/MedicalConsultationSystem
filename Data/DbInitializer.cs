@@ -10,15 +10,16 @@ namespace MedicalConsultationSystem.Data
     {
         public static void initialize(MedicalConsultationContext context)
         {
+            context.Database.EnsureCreated();
             // Look for any students.
-            if (context.Doctors.Any())
-            {
-                return;   // DB has been seeded
-            }
+            //if (context.Doctors.Any())
+            //{
+            //    return;   // DB has been seeded
+            //}
 
             var doctors = new Doctor[]
             {
-                new Doctor(){DateOfJoining = new DateTime(), FirstMidName = "Some", ID = 1, LastName = "Name"}
+                new Doctor(){DateOfJoining = new DateTime(), FirstMidName = "Some", LastName = "Name", Specialization = Specialization.A}
             };
 
             foreach (Doctor d in doctors)

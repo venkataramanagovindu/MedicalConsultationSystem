@@ -8,6 +8,8 @@ namespace MedicalConsultationSystem.Models
     public class Patient
     {
         public int ID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public int DoctorID { get; set; }
         public int RoomID { get; set; }
 
