@@ -54,7 +54,7 @@ namespace MedicalConsultationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,RoomNumber,PatientId")] Room room)
+        public async Task<IActionResult> Create([Bind("ID,RoomNumber,Description, Available")] Room room)
         {
             if (ModelState.IsValid)
             {

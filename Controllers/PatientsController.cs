@@ -49,7 +49,7 @@ namespace MedicalConsultationSystem.Controllers
         // GET: Patients/Create
         public IActionResult Create()
         {
-            ViewData["DoctorID"] = new SelectList(_context.Doctors, "ID", "ID");
+            ViewData["DoctorID"] = new SelectList(_context.Doctors, "FirstMidName", "ID");
             ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "ID");
             return View();
         }
@@ -59,7 +59,7 @@ namespace MedicalConsultationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,DoctorID,RoomID")] Patient patient)
+        public async Task<IActionResult> Create([Bind("ID,FirstName, LastName, DoctorID, RoomID, SpO2, Pulse, temperature, Respirationrate")] Patient patient)
         {
             if (ModelState.IsValid)
             {
@@ -67,6 +67,7 @@ namespace MedicalConsultationSystem.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["DoctorName"] = new SelectList(_context.Doctors, "FirstMidName", "FirstMidName", patient.DoctorID);
             ViewData["DoctorID"] = new SelectList(_context.Doctors, "ID", "ID", patient.DoctorID);
             ViewData["RoomID"] = new SelectList(_context.Rooms, "ID", "ID", patient.RoomID);
             return View(patient);
@@ -95,7 +96,7 @@ namespace MedicalConsultationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,DoctorID,RoomID")] Patient patient)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,FirstName, LastName, DoctorID, RoomID, SpO2, Pulse, temperature, Respirationrate")] Patient patient)
         {
             if (id != patient.ID)
             {

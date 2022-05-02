@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace MedicalConsultationSystem.Models
 {
-    public class Room
+    public class User
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-        public int RoomNumber { get; set; }
-        public string Description { get; set; }
-        public bool Available { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+
     }
 }

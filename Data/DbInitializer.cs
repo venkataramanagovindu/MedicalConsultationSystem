@@ -17,16 +17,16 @@ namespace MedicalConsultationSystem.Data
             //    return;   // DB has been seeded
             //}
 
-            var doctors = new Doctor[]
-            {
-                new Doctor(){DateOfJoining = new DateTime(), FirstMidName = "Some", LastName = "Name", Specialization = Specialization.A}
-            };
+            //var doctors = new Doctor[]
+            //{
+            //    new Doctor(){DateOfJoining = new DateTime(), FirstMidName = "Some", LastName = "Name", Specialization = Specialization.A}
+            //};
 
-            foreach (Doctor d in doctors)
-            {
-                context.Doctors.Add(d);
-            }
-            context.SaveChanges();
+            //foreach (Doctor d in doctors)
+            //{
+            //    context.Doctors.Add(d);
+            //}
+            //context.SaveChanges();
         }
     }
 }

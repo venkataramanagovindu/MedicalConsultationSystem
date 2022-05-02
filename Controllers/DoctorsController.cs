@@ -46,6 +46,16 @@ namespace MedicalConsultationSystem.Controllers
         // GET: Doctors/Create
         public IActionResult Create()
         {
+
+            var Specializations = from Specialization d in Enum.GetValues(typeof(Specialization))
+                             select new { ID = (int)d, Name = d.ToString() };
+
+            ViewData["Specialization"] = new SelectList(Specializations, "ID", "Name");
+            //return new SelectList(directions, "ID", "Name", someSelectedValue);
+
+
+            //ViewData["Specialization"] = new SelectList(Specialization.A, "FirstMidName", "FirstMidName", patient.DoctorID);
+            //Specialization
             return View();
         }
 
@@ -68,6 +78,10 @@ namespace MedicalConsultationSystem.Controllers
         // GET: Doctors/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var Specializations = from Specialization d in Enum.GetValues(typeof(Specialization))
+                                  select new { ID = (int)d, Name = d.ToString() };
+
+            ViewData["Specialization"] = new SelectList(Specializations, "ID", "Name");
             if (id == null)
             {
                 return NotFound();

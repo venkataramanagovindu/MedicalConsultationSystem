@@ -24,10 +24,10 @@ namespace MedicalConsultationSystem.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Room>()
-                .HasOne(r => r.Patient)
-                .WithOne(p => p.Room)
-                .HasForeignKey<Patient>(r => r.RoomID);
+            //modelBuilder.Entity<Room>()
+            //    .HasOne(r => r.Patient)
+            //    .WithOne(p => p.Room)
+            //    .HasForeignKey<Patient>(r => r.RoomID);
 
             modelBuilder.Entity<Doctor>().ToTable("Doctor");
             modelBuilder.Entity<Patient>().ToTable("Patient");
