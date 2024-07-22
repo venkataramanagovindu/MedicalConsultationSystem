@@ -1,8 +1,42 @@
-﻿@{
-    ViewData["Title"] = "Home";
-}
+﻿
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="text-center">
+                <h1 class="display-4">Welcome to the Medical Consultancy System</h1>
+                <p>Your health, our priority. Connect with top doctors and get the best consultation services.</p>
+                <div class="row mt-4">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Find a Doctor</h5>
+                                <p class="card-text">Search and book appointments with experienced doctors.</p>
+                                <a href="/Doctors/Index" class="btn btn-primary">Find Doctors</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Patients</h5>
+                                <p class="card-text">View and manage your medical records and appointments.</p>
+                                <a href="/Patients/Index" class="btn btn-primary">Patient Portal</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Consultation Rooms</h5>
+                                <p class="card-text">Access your scheduled consultation rooms.</p>
+                                <a href="/Rooms/Index" class="btn btn-primary">Enter Rooms</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>

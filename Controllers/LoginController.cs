@@ -22,7 +22,7 @@ namespace MedicalConsultationSystem.Controllers
 
         //public IActionResult Login([Bind("username", "password")] User user)
         //{
-        //    //await _context.FindAsync();
+        //    await _context.FindAsync();
         //}
     }
 }
