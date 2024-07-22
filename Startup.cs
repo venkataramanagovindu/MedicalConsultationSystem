@@ -19,7 +19,6 @@ namespace MedicalConsultationSystem
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDistributedMemoryCache();
@@ -53,10 +52,9 @@ namespace MedicalConsultationSystem
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            services.AddHttpContextAccessor(); // Add this line to enable session and HttpContext access
+            services.AddHttpContextAccessor();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -70,12 +68,10 @@ namespace MedicalConsultationSystem
 
             app.UseStaticFiles();
 
+            app.UseSession(); // Ensure this is before UseRouting
             app.UseRouting();
 
-            app.UseSession();
-
             app.UseAuthentication();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

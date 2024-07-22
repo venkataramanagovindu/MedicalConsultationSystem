@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using MedicalConsultationSystem.Data;
 using MedicalConsultationSystem.Models;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -54,14 +54,27 @@ namespace MedicalConsultationSystem.Controllers
 
                 if (loggedInUser != null)
                 {
-                    // Login successful, redirect to the home page
-                    HttpContext.Session.SetString("IsLoggedIn", "true");
-                    return RedirectToAction("Index", "Home");
+                    // Create claims and sign in the user
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, user.username)
+                    };
 
+                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var authProperties = new AuthenticationProperties
+                    {
+                        IsPersistent = true
+                    };
+
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+
+                    // Set session value
+                    HttpContext.Session.SetString("IsLoggedIn", "true");
+
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    // Login failed, show error message
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return View("Index", user);
                 }
@@ -69,8 +82,9 @@ namespace MedicalConsultationSystem.Controllers
             return View("Index", user);
         }
 
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Remove("IsLoggedIn");
             return RedirectToAction(nameof(Index));
         }
