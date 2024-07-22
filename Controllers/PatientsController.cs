@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MedicalConsultationSystem.Data;
 using MedicalConsultationSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MedicalConsultationSystem.Controllers
 {
+    [Authorize(Policy = "MustBeLoggedIn")]
     public class PatientsController : Controller
     {
         private readonly MedicalConsultationContext _context;

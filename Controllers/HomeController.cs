@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MedicalConsultationSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MedicalConsultationSystem.Controllers
 {
+    [Authorize(Policy = "MustBeLoggedIn")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
