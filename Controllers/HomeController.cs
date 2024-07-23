@@ -30,10 +30,40 @@ namespace MedicalConsultationSystem.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult About()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Contact(ContactFormModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Handle form submission (e.g., send email)
+                // For now, just redirect to a Thank You page or back to the Contact page
+                return RedirectToAction("ContactConfirmation");
+            }
+            return View(model);
+        }
+
+        public IActionResult ContactConfirmation()
+        {
+            return View();
         }
     }
 }

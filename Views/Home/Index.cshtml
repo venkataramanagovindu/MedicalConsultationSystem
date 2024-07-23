@@ -1,37 +1,85 @@
 ﻿@{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to the Medical Consultancy System</h1>
-    <p>Your health, our priority. Connect with top doctors and get the best consultation services.</p>
-    <div class="row mt-4">
+<div class="container-fluid">
+    <!-- Header Section -->
+    <header class="jumbotron text-center">
+        <h1 class="display-4">Welcome to Medical Consultation System</h1>
+        <p class="lead">Your health, our priority.</p>
+        <a class="btn btn-primary btn-lg" href="@Url.Action("Register", "Login")" role="button">Get Started</a>
+    </header>
+
+    <!-- Features Section -->
+    <section class="row text-center mb-4">
         <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Find a Doctor</h5>
-                    <p class="card-text">Search and book appointments with experienced doctors.</p>
-                    <a href="/Doctors/Index" class="btn btn-primary">Find Doctors</a>
-                </div>
-            </div>
+            <img src="https://images.unsplash.com/photo-1550831106-0994fe8abcfe?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Feature 1" class="img-fluid mb-3">
+            <h3>Expert Doctors</h3>
+            <p>Consult with top specialists and get the best medical advice.</p>
         </div>
         <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Patients</h5>
-                    <p class="card-text">View and manage your medical records and appointments.</p>
-                    <a href="/Patients/Index" class="btn btn-primary">Patient Portal</a>
-                </div>
-            </div>
+            <img src="https://images.unsplash.com/photo-1638202993928-7267aad84c31?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Feature 2" class="img-fluid mb-3">
+            <h3>24/7 Support</h3>
+            <p>Our team is available round the clock to assist you with your needs.</p>
         </div>
         <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Consultation Rooms</h5>
-                    <p class="card-text">Access your scheduled consultation rooms.</p>
-                    <a href="/Rooms/Index" class="btn btn-primary">Enter Rooms</a>
+            <img src="https://images.unsplash.com/photo-1486825586573-7131f7991bdd?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Feature 3" class="img-fluid mb-3">
+            <h3>Secure & Private</h3>
+            <p>Your data is safe with us. We ensure complete confidentiality.</p>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="row align-items-center mb-4">
+        <div class="col-md-6">
+            <img src="https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="About Us" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <h2>About Us</h2>
+            <p>At Medical Consultation System, we believe in providing the best healthcare services to our patients. Our platform connects you with top medical professionals, offering convenient and reliable consultation from the comfort of your home.</p>
+            <a class="btn btn-secondary" href="@Url.Action("About", "Home")">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="text-center mb-4">
+        <h2>What Our Patients Say</h2>
+        <div id="testimonialsCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">"The consultation was quick and easy. The doctor was very knowledgeable and provided excellent advice."</p>
+                        <footer class="blockquote-footer">John Doe</footer>
+                    </blockquote>
+                </div>
+                <div class="carousel-item">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">"I had a great experience with Medical Consultation System. The support team was very responsive."</p>
+                        <footer class="blockquote-footer">Jane Smith</footer>
+                    </blockquote>
+                </div>
+                <div class="carousel-item">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">"Highly recommend this platform. The privacy and security of my data were well maintained."</p>
+                        <footer class="blockquote-footer">Robert Brown</footer>
+                    </blockquote>
                 </div>
             </div>
+            <a class="carousel-control-prev" href="#testimonialsCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#testimonialsCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-    </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="text-center mb-4">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need assistance, feel free to reach out to us.</p>
+        <a class="btn btn-primary" href="@Url.Action("Contact", "Home")">Contact Us</a>
+    </section>
 </div>
