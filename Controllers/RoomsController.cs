@@ -88,7 +88,7 @@ namespace MedicalConsultationSystem.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,RoomNumber,PatientId")] Room room)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,RoomNumber,PatientId,Description")] Room room)
         {
             if (id != room.ID)
             {
