@@ -21,6 +21,8 @@ namespace MedicalConsultationSystem
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+
             services.AddDistributedMemoryCache();
 
             services.AddSession(options =>
@@ -45,7 +47,7 @@ namespace MedicalConsultationSystem
                 });
             });
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             services.AddDbContext<MedicalConsultationContext>(options =>
             {
